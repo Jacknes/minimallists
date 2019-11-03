@@ -55,8 +55,11 @@ const ItemCreator: React.FC<Props> = ({ onCreateItem, onEditing }) => {
 const Root = styled.div`
   /* border-bottom: 1px solid #e5e5e5; */
   display: flex;
+  /* max-height: 4vh; */
+  height: 4vh;
+  margin-top: 4px;
   /* flex: 1; */
-  padding: 8px 0;
+  /* padding: 8px 0; */
 `;
 
 const StyledInput = styled.input`

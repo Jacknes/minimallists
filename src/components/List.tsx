@@ -17,8 +17,10 @@ const List: React.FC<Props> = () => {
     setEditing(editing);
   };
 
+  const numberOfItems = items.length;
+
   return (
-    <Root editing={editing}>
+    <Root editing={editing} numberOfItems={numberOfItems}>
       <ListItems>
         {items.map(item => {
           return <ListItem type="plain" value={item} />;
@@ -31,13 +33,15 @@ const List: React.FC<Props> = () => {
 
 type RootProps = {
   editing: boolean;
+  numberOfItems: number;
 };
 
 const Root = styled.div<RootProps>`
   display: flex;
   flex: 1;
   flex-direction: column;
-   /* transform: translateY(50vh); */
+  transform: ${p =>
+    p.editing ? `translateY(${46 - p.numberOfItems * 4}vh)` : "translateY(0)"};
     /* transition: all 300ms; */
   /* align-items: center; */
   /* justify-content: flex-end; */
@@ -45,7 +49,7 @@ const Root = styled.div<RootProps>`
   /* height: 100%; */
   /* justify-content: ${p => (p.editing ? "flex-end" : "flex-start")}; */
   /* justify-content: ${p => (p.editing ? "center" : "flex-start")}; */
-  padding-top: ${p => (p.editing ? "50%" : "0%")};
+  /* padding-top: ${p => (p.editing ? "50%" : "0%")}; */
   /* height: 80%; */
   /* margin-left: 20%;
   margin-right: 20%; */

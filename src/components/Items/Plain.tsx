@@ -1,21 +1,18 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 type Props = {
-    value: string;
+  value: string;
 };
 
 const PlainListItem: React.FC<Props> = ({ value }) => {
-    return (
-        <Root>
-            {value}
-        </Root>
-    )
+  return <Root>{value}</Root>;
 };
 
 const Root = styled.div`
-    font-size: 32px;
+  font-size: 32px;
+  height: 3vh;
+  margin-bottom: 1vh;
 `;
-
 
 export default PlainListItem;
