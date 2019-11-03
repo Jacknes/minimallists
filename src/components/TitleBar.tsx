@@ -3,17 +3,23 @@ import styled from "styled-components";
 import isHotkey from "is-hotkey";
 
 type Props = {
-  onCreateItem(value: string): void;
+  value: string;
+  display: boolean;
+  onChangeTitle(value: string): void;
   onEditing(editing: boolean): void;
 };
 
-const ItemCreator: React.FC<Props> = ({ onCreateItem, onEditing }) => {
-  const [value, setValue] = useState("");
+const TitleBar: React.FC<Props> = ({
+  value: _value,
+  display,
+  onChangeTitle,
+  onEditing
+}) => {
+  const [value, setValue] = useState(_value);
 
   const handleCreateItem = () => {
     if (value !== "") {
-      onCreateItem(value);
-      setValue("");
+      onChangeTitle(value);
     }
   };
 
@@ -39,34 +45,37 @@ const ItemCreator: React.FC<Props> = ({ onCreateItem, onEditing }) => {
   };
 
   return (
-    <Root>
+    <Root display={display}>
       <StyledInput
         value={value}
-        placeholder="New list item..."
+        placeholder="Untitled List"
         onChange={handleOnChange}
         onBlur={handleOnBlur}
         onFocus={handleOnFocus}
         onKeyDown={handleOnKeyDown}
-        autoFocus
       />
     </Root>
   );
 };
 
-const Root = styled.div`
-  /* border-bottom: 1px solid #e5e5e5; */
+const Root = styled.div<any>`
+  opacity: ${p => (p.display ? "1" : "0")};
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: red;
   display: flex;
   /* max-height: 4vh; */
-  height: 4vh;
-  margin-top: 1vh;
   /* margin-top: 4px; */
   /* flex: 1; */
   /* padding: 8px 0; */
+  transition: all 0.3s ease-in-out;
 `;
 
 const StyledInput = styled.input`
   /* text-align: center; */
-  font-size: 32px;
+  font-size: 24px;
   outline: none;
   border: 0;
   width: 100%;
@@ -79,4 +88,4 @@ const StyledInput = styled.input`
     } */
 `;
 
-export default ItemCreator;
+export default TitleBar;

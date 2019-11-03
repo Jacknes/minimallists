@@ -11,8 +11,7 @@ const PlainListItem: React.FC<Props> = ({ value }) => {
 
 const Root = styled.div`
   font-size: 32px;
-  height: 3vh;
-  margin-bottom: 1vh;
+  /* margin-bottom: 1vh; */
 `;
 
 export default PlainListItem;
