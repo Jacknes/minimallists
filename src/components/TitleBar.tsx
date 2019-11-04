@@ -64,8 +64,11 @@ const Root = styled.div<any>`
   top: 0;
   left: 0;
   right: 0;
-  background-color: red;
+  /* background-color: #e5e5e5; */
+  border-bottom: 1px solid #e5e5e5;
   display: flex;
+  height: 64px;
+  padding: 0 10%;
   /* max-height: 4vh; */
   /* margin-top: 4px; */
   /* flex: 1; */
@@ -75,10 +78,11 @@ const Root = styled.div<any>`
 
 const StyledInput = styled.input`
   /* text-align: center; */
+  background-color: transparent;
   font-size: 24px;
   outline: none;
   border: 0;
-  width: 100%;
+  /* width: 100%; */
   padding: 0;
   /* ::placeholder{
         text-align: center;

@@ -3,16 +3,17 @@ import styled from "styled-components";
 import isHotkey from "is-hotkey";
 
 type Props = {
-  onCreateItem(value: string): void;
+  onCreateItem(value: string, type: string): void;
   onEditing(editing: boolean): void;
 };
 
 const ItemCreator: React.FC<Props> = ({ onCreateItem, onEditing }) => {
   const [value, setValue] = useState("");
+  const [type, setType] = useState('plain');
 
   const handleCreateItem = () => {
     if (value !== "") {
-      onCreateItem(value);
+      onCreateItem(value, type);
       setValue("");
     }
   };
@@ -23,7 +24,7 @@ const ItemCreator: React.FC<Props> = ({ onCreateItem, onEditing }) => {
   };
 
   const handleOnBlur = () => {
-    handleCreateItem();
+    // handleCreateItem();
     onEditing(false);
   };
 
@@ -32,14 +33,22 @@ const ItemCreator: React.FC<Props> = ({ onCreateItem, onEditing }) => {
   };
 
   const handleOnKeyDown = (e: React.KeyboardEvent) => {
-    if (isHotkey("enter", e.nativeEvent)) {
+    const event = e.nativeEvent;
+    if (isHotkey("enter", event)) {
       console.log("enter!!");
       handleCreateItem();
+    } else if (isHotkey('tab', event)) {
+      console.log('tab!!');
+      e.preventDefault();
+      setType('check');
     }
   };
 
   return (
     <Root>
+      {type === 'check' && (
+        <StyledCheckbox type="checkbox" />
+      )}
       <StyledInput
         value={value}
         placeholder="New list item..."
@@ -56,12 +65,9 @@ const ItemCreator: React.FC<Props> = ({ onCreateItem, onEditing }) => {
 const Root = styled.div`
   /* border-bottom: 1px solid #e5e5e5; */
   display: flex;
-  /* max-height: 4vh; */
   height: 4vh;
   margin-top: 1vh;
-  /* margin-top: 4px; */
-  /* flex: 1; */
-  /* padding: 8px 0; */
+  align-items: center;
 `;
 
 const StyledInput = styled.input`
@@ -77,6 +83,12 @@ const StyledInput = styled.input`
     :focus {
         text-align: left;
     } */
+`;
+
+const StyledCheckbox = styled.input`
+    font-size: 32px;
+    line-height: 32px;
+    margin-right: 8px;
 `;
 
 export default ItemCreator;

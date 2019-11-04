@@ -2,21 +2,22 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import List from "./components/List";
 import TitleBar from "./components/TitleBar";
+import { ItemType, Item } from './types';
 
 const App: React.FC = () => {
-  const [items, setItems] = useState<string[]>([]);
+  const [items, setItems] = useState<Item[]>([]);
   const [editing, setEditing] = useState(true);
 
-  const handleCreateItem = (value: string, type: string) => {
-    setItems([...items, value]);
+  const handleCreateItem = (value: string, type: ItemType) => {
+    setItems([...items, { value, type }]);
   };
 
   const handleEditing = (editing: boolean) => {
     setEditing(editing);
   };
 
-  const handleChangeTitle = (value: string) => {};
-  const handleEditingTitle = (editing: boolean) => {};
+  const handleChangeTitle = (value: string) => { };
+  const handleEditingTitle = (editing: boolean) => { };
   console.log("items.length", items.length);
   return (
     <Root>
