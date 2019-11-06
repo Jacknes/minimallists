@@ -50,8 +50,8 @@ const ListItems = styled.div`
 
 const OffsetWrapper = styled.div<RootProps>`
   transform: ${p =>
-    p.editing || p.numberOfItems < 1
-      ? `translate3d(0,${47.5 - p.numberOfItems * 6}vh, 0)`
+    p.editing || p.numberOfItems < 9
+      ? `translate3d(0,${47.5 - p.numberOfItems * 5}vh, 0)`
       : "translate3d(0,64px,0)"};
   transition: all 0.3s ease-in-out;
 `;

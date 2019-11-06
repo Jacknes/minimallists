@@ -21,8 +21,8 @@ font-size: 32px;
 `
 
 const StyledCheckbox = styled.input`
-    font-size: 32px;
-    line-height: 32px;
+    font-size: 2.5vh;
+    line-height: 2.5vh;
     margin-right: 8px;
 `;
 

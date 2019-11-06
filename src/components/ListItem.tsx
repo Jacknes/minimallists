@@ -22,8 +22,9 @@ const ListItem: React.FC<Props> = ({ value, type }) => {
 };
 
 const Root = styled.div`
-  height: 4vh;
-  margin: 1vh 0;
+  height: 6vh;
+  /* margin: 1vh 0; */
+  margin-top: 1vh;
   /* margin: 16px 0; */
 `;
 

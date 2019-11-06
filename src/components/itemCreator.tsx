@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import isHotkey from "is-hotkey";
+import Textarea from 'react-autosize-textarea';
 
 type Props = {
   onCreateItem(value: string, type: string): void;
@@ -14,7 +15,7 @@ const ItemCreator: React.FC<Props> = ({ onCreateItem, onEditing }) => {
   const handleCreateItem = () => {
     if (value !== "") {
       onCreateItem(value, type);
-      setValue("");
+      setValue('');
     }
   };
 
@@ -35,6 +36,7 @@ const ItemCreator: React.FC<Props> = ({ onCreateItem, onEditing }) => {
   const handleOnKeyDown = (e: React.KeyboardEvent) => {
     const event = e.nativeEvent;
     if (isHotkey("enter", event)) {
+      e.preventDefault();
       console.log("enter!!");
       handleCreateItem();
     } else if (isHotkey('tab', event)) {
@@ -70,13 +72,15 @@ const Root = styled.div`
   align-items: center;
 `;
 
-const StyledInput = styled.input`
+const StyledInput = styled(Textarea)`
   /* text-align: center; */
-  font-size: 32px;
+  resize: none;
+  font-size: 2.5vh;
   outline: none;
   border: 0;
   width: 100%;
   padding: 0;
+  /* border: 1px solid red; */
   /* ::placeholder{
         text-align: center;
     }

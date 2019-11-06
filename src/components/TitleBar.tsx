@@ -54,6 +54,7 @@ const TitleBar: React.FC<Props> = ({
         onFocus={handleOnFocus}
         onKeyDown={handleOnKeyDown}
       />
+      <Menu>Menu</Menu>
     </Root>
   );
 };
@@ -65,9 +66,9 @@ const Root = styled.div<any>`
   left: 0;
   right: 0;
   /* background-color: #e5e5e5; */
-  border-bottom: 1px solid #e5e5e5;
+  /* border-bottom: 1px solid #e5e5e5; */
   display: flex;
-  height: 64px;
+  height: 6vh;
   padding: 0 10%;
   /* max-height: 4vh; */
   /* margin-top: 4px; */
@@ -79,7 +80,7 @@ const Root = styled.div<any>`
 const StyledInput = styled.input`
   /* text-align: center; */
   background-color: transparent;
-  font-size: 24px;
+  font-size: 1.5vmax;
   outline: none;
   border: 0;
   /* width: 100%; */
@@ -90,6 +91,12 @@ const StyledInput = styled.input`
     :focus {
         text-align: left;
     } */
+`;
+
+const Menu = styled.span`
+    font-size: 1.5vmax;
+    line-height: 6vh;
+    margin-left: auto;
 `;
 
 export default TitleBar;

@@ -10,7 +10,7 @@ const PlainListItem: React.FC<Props> = ({ value }) => {
 };
 
 const Root = styled.div`
-  font-size: 32px;
+  font-size: 2.5vh;
   /* margin-bottom: 1vh; */
 `;
 
