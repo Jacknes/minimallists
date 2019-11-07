@@ -1,1 +1,1 @@
-## Minimal lists motherfucker
+## Minimal lists
