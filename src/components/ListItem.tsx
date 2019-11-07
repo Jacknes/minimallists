@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Plain from "./Items/Plain";
 import Check from "./Items/Check";
+import Unordered from './Items/Unordered';
 
 type Props = {
   type: string;
@@ -16,6 +17,9 @@ const ListItem: React.FC<Props> = ({ value, type }) => {
       )}
       {type === 'check' && (
         <Check value={value} />
+      )}
+      {type === 'ul' && (
+        <Unordered value={value} />
       )}
     </Root>
   );

@@ -43,6 +43,18 @@ const ItemCreator: React.FC<Props> = ({ onCreateItem, onEditing }) => {
       console.log('tab!!');
       e.preventDefault();
       setType('check');
+    } else if (isHotkey('-', event)) {
+      console.log('dash!!');
+      if(!value) {
+        e.preventDefault();
+        setType('ul');
+      }
+    }else if (isHotkey('backspace', event)) {
+      console.log('dash!!');
+      if(!value) {
+        e.preventDefault();
+        setType('plain');
+      }
     }
   };
 
@@ -50,6 +62,9 @@ const ItemCreator: React.FC<Props> = ({ onCreateItem, onEditing }) => {
     <Root>
       {type === 'check' && (
         <StyledCheckbox type="checkbox" />
+      )}
+      {type === 'ul' && (
+        <StyledLi />
       )}
       <StyledInput
         value={value}
@@ -92,6 +107,12 @@ const StyledInput = styled(Textarea)`
 const StyledCheckbox = styled.input`
     font-size: 32px;
     line-height: 32px;
+    margin-right: 8px;
+`;
+
+const StyledLi = styled.li`
+    font-size: 2.5vh;
+    line-height: 2.5vh;
     margin-right: 8px;
 `;
 
