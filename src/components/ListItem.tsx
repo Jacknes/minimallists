@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Draggable } from "react-beautiful-dnd";
 import Plain from "./Items/Plain";
 import Check from "./Items/Check";
+import Unordered from "./Items/Unordered";
 
 type Props = {
   id: string;
@@ -22,6 +23,7 @@ const ListItem: React.FC<Props> = ({ id, value, type, index }) => {
         >
           {type === "plain" && <Plain value={value} />}
           {type === "check" && <Check value={value} />}
+          {type === "ul" && <Unordered value={value} />}
         </Root>
       )}
     </Draggable>

@@ -5,8 +5,8 @@ type Props = {
     value: string;
 };
 
-const CheckListItem: React.FC<Props> = ({ value }) => {
-    return <Root><StyledCheckbox type="checkbox" /><Text>{value}</Text></Root>;
+const UnorderedListItem: React.FC<Props> = ({ value }) => {
+    return <Root><StyledLi/><Text>{value}</Text></Root>;
 };
 
 const Root = styled.div`
@@ -20,10 +20,10 @@ font-size: 2.5vh;
 
 `
 
-const StyledCheckbox = styled.input`
+const StyledLi = styled.li`
     font-size: 2.5vh;
     line-height: 2.5vh;
     margin-right: 8px;
 `;
 
-export default CheckListItem;
+export default UnorderedListItem;
