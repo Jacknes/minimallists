@@ -1,23 +1,30 @@
 import React from "react";
 import styled from "styled-components";
+import { Draggable } from "react-beautiful-dnd";
 import Plain from "./Items/Plain";
 import Check from "./Items/Check";
 
 type Props = {
+  id: string;
   type: string;
   value: string;
+  index: number;
 };
 
-const ListItem: React.FC<Props> = ({ value, type }) => {
+const ListItem: React.FC<Props> = ({ id, value, type, index }) => {
   return (
-    <Root>
-      {type === 'plain' && (
-        <Plain value={value} />
+    <Draggable draggableId={id} index={index}>
+      {(provided: any) => (
+        <Root
+          {...provided.draggableProps}
+          {...provided.dragHandleProps}
+          ref={provided.innerRef}
+        >
+          {type === "plain" && <Plain value={value} />}
+          {type === "check" && <Check value={value} />}
+        </Root>
       )}
-      {type === 'check' && (
-        <Check value={value} />
-      )}
-    </Root>
+    </Draggable>
   );
 };
 

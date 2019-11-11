@@ -1,6 +1,7 @@
 export type Item = {
-    value: string;
-    type: ItemType;
-}
+  id: string;
+  value: string;
+  type: ItemType;
+};
 
-export type ItemType = 'plain' | 'check' | 'radio';
+export type ItemType = "plain" | "check" | "radio";

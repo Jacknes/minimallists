@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import ItemCreator from "./itemCreator";
 import ListItem from "./ListItem";
-import { ItemType, Item } from '../types';
+import { Droppable } from "react-beautiful-dnd";
+import { ItemType, Item } from "../types";
 
 type Props = {
   items: Item[];
@@ -21,11 +22,24 @@ const List: React.FC<Props> = ({ items, editing, onCreateItem, onEditing }) => {
   return (
     <Root editing={editing} numberOfItems={numberOfItems}>
       <OffsetWrapper editing={editing} numberOfItems={numberOfItems}>
-        <ListItems>
-          {items.map(item => {
-            return <ListItem type={item.type} value={item.value} />;
-          })}
-        </ListItems>
+        <Droppable droppableId={"1"}>
+          {provided => (
+            <ListItems {...provided.droppableProps} ref={provided.innerRef}>
+              {items.map((item, index) => {
+                return (
+                  <ListItem
+                    id={item.id}
+                    key={item.id}
+                    type={item.type}
+                    value={item.value}
+                    index={index}
+                  />
+                );
+              })}
+              {provided.placeholder}
+            </ListItems>
+          )}
+        </Droppable>
         <ItemCreator onEditing={onEditing} onCreateItem={handleCreateItem} />
       </OffsetWrapper>
     </Root>
@@ -44,7 +58,7 @@ const Root = styled.div<RootProps>`
   margin: 0 30%;
 `;
 
-const ListItems = styled.div`
+const ListItems = styled.div<any>`
   /* padding-top: 32px; */
 `;
 
